@@ -5,17 +5,17 @@ import java.util.LinkedList;
 import java.util.List;
 
 /**
- * 
+ *
  * @author Gauss
- * Ê¹ÓÃOGG·â×°²¢Ğ´ÎÄ¼ş
+ * ä½¿ç”¨OGGå°è£…å¹¶å†™æ–‡ä»¶
  *
  */
 public class SpeexWriter implements Runnable {
 
-//	private Logger log = LoggerFactory.getLogger(SpeexWriter.class);
+	//	private Logger log = LoggerFactory.getLogger(SpeexWriter.class);
 	private final Object mutex = new Object();
-	
-	//Ğ´ÎÄ¼ş
+
+	//å†™æ–‡ä»¶
 	private SpeexWriteClient client = new SpeexWriteClient();
 	private volatile boolean isRecording;
 	private processedData pData;
@@ -26,7 +26,7 @@ public class SpeexWriter implements Runnable {
 	public SpeexWriter(String fileName) {
 		super();
 		list = Collections.synchronizedList(new LinkedList<processedData>());
- 
+
 		client.setSampleRate(8000);
 
 		client.start(fileName);

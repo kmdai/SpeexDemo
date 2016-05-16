@@ -27,7 +27,7 @@ public class SpeexWriteClient {
 	protected boolean vbr = false;
 
 	OggSpeexWriter speexWriter = null;// new OggSpeexWriter(mode, sampleRate,
-										// channels, nframes, vbr);
+	// channels, nframes, vbr);
 
 	public SpeexWriteClient() {
 
@@ -51,8 +51,8 @@ public class SpeexWriteClient {
 		//sampleRate=13500;//Tom
 		//sampleRate=5500;//Bee
 		vbr=true;
-		
-		//µ˜”√OGG∑‚◊∞
+
+		//Ë∞ÉÁî®OGGÂ∞ÅË£Ö
 		speexWriter = new OggSpeexWriter(mode, sampleRate, channels, nframes, vbr);
 
 		try {

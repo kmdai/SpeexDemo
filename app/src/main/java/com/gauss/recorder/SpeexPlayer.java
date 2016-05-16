@@ -18,7 +18,6 @@ public class SpeexPlayer {
     public SpeexPlayer(String fileName) {
 
         this.fileName = fileName;
-        System.out.println(this.fileName);
         try {
             speexdec = new SpeexDecoder(new File(this.fileName));
         } catch (Exception e) {

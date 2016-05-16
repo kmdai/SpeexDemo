@@ -45,7 +45,7 @@ import java.util.Random;
 
 /**
  * Ogg Speex Writer
- * 
+ *
  * @author Marc Gimpel, Wimba S.A. (mgimpel@horizonwimba.com)
  * @version $Revision: 1.2 $
  */
@@ -67,7 +67,7 @@ public class OggSpeexWriter extends AudioFileWriter {
 	private int nframes;
 	/** Defines whether or not to use VBR (Variable Bit Rate). */
 	private boolean vbr;
- 
+
 	/** Ogg Stream Serial Number */
 	private int streamSerialNumber;
 	/** Data buffer */
@@ -105,7 +105,7 @@ public class OggSpeexWriter extends AudioFileWriter {
 
 	/**
 	 * Builds an Ogg Speex Writer.
-	 * 
+	 *
 	 * @param mode
 	 *            the mode of the encoder (0=NB, 1=WB, 2=UWB).
 	 * @param sampleRate
@@ -123,7 +123,7 @@ public class OggSpeexWriter extends AudioFileWriter {
 
 	/**
 	 * Sets the output format. Must be called before WriteHeader().
-	 * 
+	 *
 	 * @param mode
 	 *            the mode of the encoder (0=NB, 1=WB, 2=UWB).
 	 * @param sampleRate
@@ -144,7 +144,7 @@ public class OggSpeexWriter extends AudioFileWriter {
 
 	/**
 	 * Sets the Stream Serial Number. Must not be changed mid stream.
-	 * 
+	 *
 	 * @param serialNumber
 	 */
 	public void setSerialNumber(final int serialNumber) {
@@ -153,7 +153,7 @@ public class OggSpeexWriter extends AudioFileWriter {
 
 	/**
 	 * Closes the output file.
-	 * 
+	 *
 	 * @exception IOException
 	 *                if there was an exception closing the Audio Writer.
 	 */
@@ -164,7 +164,7 @@ public class OggSpeexWriter extends AudioFileWriter {
 
 	/**
 	 * Open the output file.
-	 * 
+	 *
 	 * @param file
 	 *            - file to open.
 	 * @exception IOException
@@ -177,7 +177,7 @@ public class OggSpeexWriter extends AudioFileWriter {
 
 	/**
 	 * Open the output file.
-	 * 
+	 *
 	 * @param filename
 	 *            - file to open.
 	 * @exception IOException
@@ -190,7 +190,7 @@ public class OggSpeexWriter extends AudioFileWriter {
 	/**
 	 * Writes the header pages that start the Ogg Speex file. Prepares file for
 	 * data to be written.
-	 * 
+	 *
 	 * @param comment
 	 *            description to be included in the header.
 	 * @exception IOException
@@ -219,7 +219,7 @@ public class OggSpeexWriter extends AudioFileWriter {
 
 	/**
 	 * Writes a packet of audio.
-	 * 
+	 *
 	 * @param data
 	 *            - audio data.
 	 * @param offset
@@ -245,7 +245,7 @@ public class OggSpeexWriter extends AudioFileWriter {
 
 	/**
 	 * Flush the Ogg page out of the buffers into the file.
-	 * 
+	 *
 	 * @param eos
 	 *            - end of stream
 	 * @exception IOException

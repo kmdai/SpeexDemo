@@ -43,7 +43,7 @@ import java.io.OutputStream;
 
 /**
  * Abstract Class that defines an Audio File Writer.
- * 
+ *
  * @author Marc Gimpel, Wimba S.A. (mgimpel@horizonwimba.com)
  * @version $Revision: 1.1 $
  */
@@ -54,15 +54,15 @@ public abstract class AudioFileWriter
    * @exception IOException if there was an exception closing the Audio Writer.
    */
   public abstract void close()
-    throws IOException;
-  
+          throws IOException;
+
   /**
    * Open the output file. 
    * @param file - file to open.
    * @exception IOException if there was an exception opening the Audio Writer.
    */
   public abstract void open(File file)
-    throws IOException;
+          throws IOException;
 
   /**
    * Open the output file. 
@@ -70,7 +70,7 @@ public abstract class AudioFileWriter
    * @exception IOException if there was an exception opening the Audio Writer.
    */
   public abstract void open(String filename)
-    throws IOException;
+          throws IOException;
 
   /**
    * Writes the header pages that start the Ogg Speex file. 
@@ -79,8 +79,8 @@ public abstract class AudioFileWriter
    * @exception IOException
    */
   public abstract void writeHeader(String comment)
-    throws IOException;
-  
+          throws IOException;
+
   /**
    * Writes a packet of audio. 
    * @param data audio data
@@ -89,7 +89,7 @@ public abstract class AudioFileWriter
    * @exception IOException
    */
   public abstract void writePacket(byte[] data, int offset, int len)
-    throws IOException;
+          throws IOException;
 
   /**
    * Writes an Ogg Page Header to the given byte array.
@@ -118,7 +118,7 @@ public abstract class AudioFileWriter
     writeInt(buf, offset+22, 0);                  // 22 - 25: page checksum
     buf[offset+26] = (byte) packetCount;          //      26: page_segments
     System.arraycopy(packetSizes, 0,              // 27 -  x: segment_table
-                     buf, offset+27, packetCount);
+            buf, offset+27, packetCount);
     return packetCount+27;
   }
 
@@ -139,7 +139,7 @@ public abstract class AudioFileWriter
   {
     byte[] data = new byte[packetCount+27];
     writeOggPageHeader(data, 0, headerType, granulepos, streamSerialNumber,
-                       pageCount, packetCount, packetSizes);
+            pageCount, packetCount, packetSizes);
     return data;
   }
 
@@ -176,7 +176,7 @@ public abstract class AudioFileWriter
     writeInt(buf, offset+76, 0);           // 76 - 79: reserved2
     return 80;
   }
-  
+
   /**
    * Builds a Speex Header.
    * @param sampleRate
@@ -221,20 +221,20 @@ public abstract class AudioFileWriter
     writeSpeexComment(data, 0, comment);
     return data;
   }
-  
+
   /**
    * Writes a Little-endian short.
    * @param out the data output to write to.
    * @param v value to write.
    * @exception IOException
-   */  
+   */
   public static void writeShort(DataOutput out, short v)
-    throws IOException 
+          throws IOException
   {
     out.writeByte((0xff & v));
     out.writeByte((0xff & (v >>> 8)));
   }
-  
+
   /**
    * Writes a Little-endian int.
    * @param out the data output to write to.
@@ -242,7 +242,7 @@ public abstract class AudioFileWriter
    * @exception IOException
    */
   public static void writeInt(DataOutput out, int v)
-    throws IOException 
+          throws IOException
   {
     out.writeByte(0xff & v);
     out.writeByte(0xff & (v >>>  8));
@@ -257,12 +257,12 @@ public abstract class AudioFileWriter
    * @exception IOException
    */
   public static void writeShort(OutputStream os, short v)
-    throws IOException 
+          throws IOException
   {
     os.write((0xff & v));
     os.write((0xff & (v >>> 8)));
   }
-  
+
   /**
    * Writes a Little-endian int.
    * @param os - the output stream to write to.
@@ -270,7 +270,7 @@ public abstract class AudioFileWriter
    * @exception IOException
    */
   public static void writeInt(OutputStream os, int v)
-    throws IOException 
+          throws IOException
   {
     os.write(0xff & v);
     os.write(0xff & (v >>>  8));
@@ -285,7 +285,7 @@ public abstract class AudioFileWriter
    * @exception IOException
    */
   public static void writeLong(OutputStream os, long v)
-    throws IOException
+          throws IOException
   {
     os.write((int)(0xff & v));
     os.write((int)(0xff & (v >>>  8)));

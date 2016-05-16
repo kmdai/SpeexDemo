@@ -48,7 +48,7 @@
  ********************************************************************
 
  function: code raw [Vorbis] packets into framed OggSquish stream and
-           decode Ogg streams back into raw packets
+ decode Ogg streams back into raw packets
  last mod: $Id: OggCrc.java,v 1.1 2011/12/27 04:39:13 gauss Exp $
 
  note: The CRC code is directly derived from public domain code by
@@ -61,10 +61,10 @@ package com.gauss.writer.speex;
 
 /**
  * Calculates the CRC checksum for Ogg packets.
- * 
+ *
  * <p>Ogg uses the same generator polynomial as ethernet, although with an
  * unreflected alg and an init/final of 0, not 0xffffffff.
- * 
+ *
  * @author Jim Lawrence, helloNetwork.com
  * @author Marc Gimpel, Wimba S.A. (mgimpel@horizonwimba.com)
  * @version $Revision: 1.1 $
@@ -72,7 +72,7 @@ package com.gauss.writer.speex;
 public class OggCrc
 {
   // TODO - implement java.util.zip.Checksum
-  
+
   /**
    * CRC checksum lookup table
    */
@@ -86,7 +86,7 @@ public class OggCrc
         if ((r& 0x80000000)!=0) {
           /* The same as the ethernet generator polynomial, although we use an
           unreflected alg and an init/final of 0, not 0xffffffff */
-          r=(r << 1)^0x04c11db7; 
+          r=(r << 1)^0x04c11db7;
         }
         else {
           r<<=1;
@@ -95,7 +95,7 @@ public class OggCrc
       crc_lookup[i]=(r&0xffffffff);
     }
   }
-  
+
   /**
    * Calculates the checksum on the given data, from the give offset and
    * for the given length, using the given initial value.
