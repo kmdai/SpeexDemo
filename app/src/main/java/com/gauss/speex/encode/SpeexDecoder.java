@@ -91,7 +91,7 @@ public class SpeexDecoder {
                     track.stop();
                     return;
                 }
-
+                System.out.println("while-----");
                 while (this.isPaused()) {
                     track.stop();
                     Thread.sleep(100);
@@ -150,6 +150,8 @@ public class SpeexDecoder {
                         } else {
                             packetNo = 0;
                         }
+                        track.play();
+                        track.setStereoVolume(1f, 1f);// 设置当前音量大小
                     } else if (packetNo == 1) { // Ogg Comment packet
                         packetNo++;
                     } else {
@@ -158,8 +160,6 @@ public class SpeexDecoder {
                         short[] decoded = new short[160];
                         if ((decsize = speexDecoder.decode(payload, decoded, 160)) > 0) {
                             track.write(decoded, 0, decsize);
-                            track.setStereoVolume(0.7f, 0.7f);// 设置当前音量大小
-                            track.play();
                         }
                         packetNo++;
                     }
@@ -179,7 +179,7 @@ public class SpeexDecoder {
 
     /**
      * Reads the header packet.
-     * <p>
+     * <p/>
      * <pre>
      *  0 -  7: speex_string: "Speex   "
      *  8 - 27: speex_version: "speex-1.0"
@@ -206,7 +206,7 @@ public class SpeexDecoder {
      */
     private boolean readSpeexHeader(final byte[] packet, final int offset, final int bytes, boolean init) throws Exception {
         if (bytes != 80) {
-            System.out.println("Oooops");
+            System.out.println("-----Oooops");
             return false;
         }
         if (!"Speex   ".equals(new String(packet, offset, 8))) {
@@ -217,7 +217,7 @@ public class SpeexDecoder {
         int channels = readInt(packet, offset + 48);
         int nframes = readInt(packet, offset + 64);
         int frameSize = readInt(packet, offset + 56);
-        System.out.println("mode=" + mode + " sampleRate==" + sampleRate + " channels=" + channels + "nframes=" + nframes + "framesize="
+        System.out.println("--------mode=" + mode + " sampleRate==" + sampleRate + " channels=" + channels + "nframes=" + nframes + "framesize="
                 + frameSize);
         initializeAndroidAudio(sampleRate);
 
@@ -230,14 +230,14 @@ public class SpeexDecoder {
     }
 
     protected static int readInt(final byte[] data, final int offset) {
-		/*
-		 * no 0xff on the last one to keep the sign
+        /*
+         * no 0xff on the last one to keep the sign
 		 */
         return (data[offset] & 0xff) | ((data[offset + 1] & 0xff) << 8) | ((data[offset + 2] & 0xff) << 16) | (data[offset + 3] << 24);
     }
 
     protected static long readLong(final byte[] data, final int offset) {
-		/*
+        /*
 		 * no 0xff on the last one to keep the sign
 		 */
         return (data[offset] & 0xff) | ((data[offset + 1] & 0xff) << 8) | ((data[offset + 2] & 0xff) << 16)
